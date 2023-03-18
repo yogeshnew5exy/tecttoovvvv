@@ -120,7 +120,7 @@ async def account_login(bot: Client, m: Message):
         content = content.split("\n")
         links = []
         for i in content:
-            links.append(i.split(":",)
+            links.append(i.split(":",1)) 
         os.remove(x)
         # print(len(links))
     except:
