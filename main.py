@@ -420,6 +420,8 @@ async def account_login(bot: Client, m: Message):
                 continue
 
     except Exception as e:
+        logging.error(e)
+                        
         await m.reply_text(e)
     await m.reply_text("Done")
 
