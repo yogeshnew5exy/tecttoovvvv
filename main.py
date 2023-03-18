@@ -27,6 +27,7 @@ from pyrogram.types import User, Message
 import re
 import os
 import io
+import logging
 #import pycurl
 
 # bot = Client(
@@ -35,29 +36,42 @@ import io
 #     api_hash=api_hash,
 #     bot_token=bot_token)
 
+from logging.handlers import RotatingFileHandler
 
+logging.basicConfig(
+    level=logging.DEBUG,
+    format=
+    "%(asctime)s - %(levelname)s - %(message)s [%(filename)s:%(lineno)d]",
+    datefmt="%d-%b-%y %H:%M:%S",
+    handlers=[
+        RotatingFileHandler("Assist.txt", maxBytes=50000000, backupCount=10),
+        logging.StreamHandler(),
+    ],
+)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
+
+
+logging = logging.getLogger()
 
 
 bot = Client("bot",
              bot_token=os.environ.get("BOT_TOKEN"),
              api_id=int(os.environ.get("API_ID")),
              api_hash=os.environ.get("API_HASH"))
-auth_users = [
-    int(chat) for chat in os.environ.get("AUTH_USERS").split(",") if chat != '']
+auth_users = [5748425435,5579690619]
 sudo_users = auth_users
-sudo_groups = [
-    int(chat) for chat in os.environ.get("GROUPS").split(",") if chat != '']
+sudo_groups = [-1001717517834]
 
 keyboard = InlineKeyboardMarkup(
     [
         [
             InlineKeyboardButton(
                 text="Devloper",
-                url="@MRSHIV01",
+                url="https://t.me/MRSHIV01",
             ),
             InlineKeyboardButton(
                 text="Repo",
-                url="@MRSHIV01",
+                url="https://github.com/",
             ),
         ],
     ]
@@ -97,7 +111,7 @@ async def account_login(bot: Client, m: Message):
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
-
+    logging.info(2333)
     path = f"./downloads/{m.chat.id}"
 
     try:
