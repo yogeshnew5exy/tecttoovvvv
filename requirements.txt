@@ -1,7 +1,7 @@
-pyrogram
+pyrogram==1.4.16
 tgcrypto
 requests
-pyromod
+pyromod==1.5
 yt-dlp
 ffmpeg
 aiohttp
@@ -9,7 +9,7 @@ aiofiles
 asyncio
 pycurl
 humanize
-ethon==0.1.2
+
 cryptg
 telethon
 python-decouple
