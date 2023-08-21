@@ -25,6 +25,10 @@
         "BOT_TOKEN":{
             "description":"Get from BotFather",
             "value":""
+	},
+        "AUTH_USERS":{
+            "description":"Admin/Owner/Friends ID Seperate by ','  Ex: 44578878,8878899",
+            "value":""
         
         }
     }
