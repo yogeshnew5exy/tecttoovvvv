@@ -43,6 +43,7 @@ import sys
 import re
 import os
 from logging.handlers import RotatingFileHandler
+import logging
 
 
 logging.basicConfig(
