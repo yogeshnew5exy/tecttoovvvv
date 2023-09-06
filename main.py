@@ -139,15 +139,15 @@ async def restart_handler(_, m):
 
 
 
-@bot.on_message(filters.command(["covid"]))
+@bot.on_message(filters.command(["TIGER"]))
 async def account_login(bot: Client, m: Message):
     user = m.from_user.id if m.from_user is not None else None
     if user is not None and user not in sudo_users:
-        await m.reply("**https://telegra.ph/file/ece58d24bb5910b90098f.jpg", quote=True)
+        ", quote=True)
         return
     else:
         editable = await m.reply_text(
-            "send text file🗃️")
+            "HELLO I AM TXT DOWNLOAD BOT FOR TIGER")
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
