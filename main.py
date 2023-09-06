@@ -143,7 +143,7 @@ async def restart_handler(_, m):
 async def account_login(bot: Client, m: Message):
     user = m.from_user.id if m.from_user is not None else None
     if user is not None and user not in sudo_users:
-        await m.reply("SORRY BRO TIGER NOT ALLOWED", quote=True)
+        await m.reply("SORRY BRO TIGER NOT ALLOWED")
         return
     else:
         editable = await m.reply_text(
