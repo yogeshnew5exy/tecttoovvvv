@@ -1,5 +1,10 @@
 # BOT
 
+## Colab
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tiger7815/tecttoovvvv/blob/main/tecttoovvvv.ipynb)
+
+#
+#
 ## Deploy To Heroku
 
 <a href="https://heroku.com/deploy?template=https://github.com/tiger7815/tecttoovvvv">
