@@ -278,7 +278,7 @@ async def account_login(bot: Client, m: Message):
                 
                 try:  
                 
-                    cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res} {MR}.mkv\n**Batch »** {raw_text0}\n\n'
+                    cc2 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res} {MR}.mkv\n**LINK »** {url}\n\n'
               
                     if "drive" in url:
                         try:
