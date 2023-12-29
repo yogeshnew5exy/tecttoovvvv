@@ -66,7 +66,7 @@ bot = Client("bot",
              bot_token=os.environ.get("BOT_TOKEN"),
              api_id=int(os.environ.get("API_ID")),
              api_hash=os.environ.get("API_HASH"))
-auth_users = [5908818236,5587431966,5987970971,6061552289,5839999461,6621567329,5660459302]
+auth_users = [5839999461]
 sudo_users = auth_users
 sudo_groups = [-1001911553062]
 
@@ -129,7 +129,7 @@ keyboard = InlineKeyboardMarkup(
 
 @bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text(f"Hello [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nPress /yogesh")
+    editable = await m.reply_text(f"Hello [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nPress /covid")
 
 
 @bot.on_message(filters.command("stop"))
@@ -139,11 +139,11 @@ async def restart_handler(_, m):
 
 
 
-@bot.on_message(filters.command(["yogesh"]))
+@bot.on_message(filters.command(["covid"]))
 async def account_login(bot: Client, m: Message):
     user = m.from_user.id if m.from_user is not None else None
     if user is not None and user not in sudo_users:
-        await m.reply("**https://telegra.ph", quote=True)
+        await m.reply("**https://telegra.ph/file/ece58d24bb5910b90098f.jpg", quote=True)
         return
     else:
         editable = await m.reply_text(
@@ -267,62 +267,62 @@ async def account_login(bot: Client, m: Message):
                 
                 cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res} {MR}.mkv\n**Batch »** {raw_text0}\n\n'
                 cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} {MR}.pdf \n**Batch »** {raw_text0}\n\n'
-                if "embed" in url:
-                    ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
-                else:
+            if "embed" in url:
+                ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
+            else:
                     ytf = f"b[height<={raw_text2}]/bv[height<={raw_text2}]+ba/b/bv+ba"
-                if "youtu" in url:
-                    ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
+            if "youtu" in url:
+                ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
+            else:
+                ytf = f"b[height<={raw_text2}]/bv[height<={raw_text2}]+ba/b/bv+ba"
+                
+            try:  
+                
+                cc2 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res} {MR}.mkv\n**LINK »** {url}\n\n'
+                  
+                if "drive" in url:
+                    try:
+                        ka = await helper.download(url, name)
+                        copy = await bot.send_document(chat_id=m.chat.id,document=ka, caption=cc1)
+                        count+=1
+                        os.remove(ka)
+                        time.sleep(1)
+                    except FloodWait as e:
+                        await m.reply_text(str(e))
+                        time.sleep(e.x)
+                        continue
+                
+                elif ".pdf" in url:
+                    try:
+                        cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
+                        download_cmd = f"{cmd} -R 25 --fragment-retries 25"
+                        os.system(download_cmd)
+                        copy = await bot.send_document(chat_id=m.chat.id, document=f'{name}.pdf', caption=cc1)
+                        count += 1
+                        os.remove(f'{name}.pdf')
+                    except FloodWait as e:
+                        await m.reply_text(str(e))
+                        time.sleep(e.x)
+                        continue
                 else:
-                    ytf = f"b[height<={raw_text2}]/bv[height<={raw_text2}]+ba/b/bv+ba"
-                
-                try:  
-                
-                    cc2 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res} {MR}.mkv\n**LINK »** {url}\n\n'
-                    if "drive" in url:
-                        try:
-                            ka = await helper.download(url, name)
-                            copy = await bot.send_document(chat_id=m.chat.id,document=ka, caption=cc1)
-                            count+=1
-                            os.remove(ka)
-                            time.sleep(1)
-                        except FloodWait as e:
-                           await m.reply_text(str(e))
-                           time.sleep(e.x)
-                           continue
-                
-                    elif ".pdf" in url:
-                       try:
-                           cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
-                           download_cmd = f"{cmd} -R 25 --fragment-retries 25"
-                           os.system(download_cmd)
-                           copy = await bot.send_document(chat_id=m.chat.id, document=f'{name}.pdf', caption=cc1)
-                           count += 1
-                           os.remove(f'{name}.pdf')
-                       except FloodWait as e:
-                          await m.reply_text(str(e))
-                          time.sleep(e.x)
-                          continue
-                    else:
-                       Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
-                       prog = await m.reply_text(Show)
-                       res_file = await helper.download_video(url, cmd, name)
-                       filename = res_file
-                       await prog.delete(True)
-                       await helper.send_vid(bot, m, cc, filename, thumb, name, prog)
-                       count += 1
-                       time.sleep(1)
+                    Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
+                    prog = await m.reply_text(Show)
+                    res_file = await helper.download_video(url, cmd, name)
+                    filename = res_file
+                    await prog.delete(True)
+                    await helper.send_vid(bot, m, cc, filename, thumb, name, prog)
+                    count += 1
+                    time.sleep(1)
 
-                except Exception as e:
-                  await m.reply_text(
+            except Exception as e:
+                await m.reply_text(
                     f"**downloading failed 🥺**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
                 )
                 continue
 
-                except Exception as e:
-                    await m.reply_text(e)
-               await m.reply_text("Done")
+    except Exception as e:
+        await m.reply_text(e)
+    await m.reply_text("Done")
 
 
-bot.run() 
-                    
+bot.run()
