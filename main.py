@@ -286,12 +286,12 @@ async def account_login(bot: Client, m: Message):
                             count+=1
                             os.remove(ka)
                             time.sleep(1)
-                       except FloodWait as e:
+                        except FloodWait as e:
                            await m.reply_text(str(e))
                            time.sleep(e.x)
                            continue
                 
-                   elif ".pdf" in url:
+                    elif ".pdf" in url:
                        try:
                            cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
                            download_cmd = f"{cmd} -R 25 --fragment-retries 25"
@@ -299,11 +299,11 @@ async def account_login(bot: Client, m: Message):
                            copy = await bot.send_document(chat_id=m.chat.id, document=f'{name}.pdf', caption=cc1)
                            count += 1
                            os.remove(f'{name}.pdf')
-                      except FloodWait as e:
+                       except FloodWait as e:
                           await m.reply_text(str(e))
                           time.sleep(e.x)
                           continue
-                   else:
+                    else:
                        Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
                        prog = await m.reply_text(Show)
                        res_file = await helper.download_video(url, cmd, name)
