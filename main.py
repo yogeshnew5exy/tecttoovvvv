@@ -276,21 +276,21 @@ async def account_login(bot: Client, m: Message):
                 else:
                     ytf = f"b[height<={raw_text2}]/bv[height<={raw_text2}]+ba/b/bv+ba"
                 
-            try:  
+                try:  
                 
-                cc2 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res} {MR}.mkv\n**LINK »** {url}\n\n'
+                    cc2 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res} {MR}.mkv\n**LINK »** {url}\n\n'
                   
-                if "drive" in url:
-                    try:
-                        ka = await helper.download(url, name)
-                        copy = await bot.send_document(chat_id=m.chat.id,document=ka, caption=cc1)
-                        count+=1
-                        os.remove(ka)
-                        time.sleep(1)
-                    except FloodWait as e:
-                        await m.reply_text(str(e))
-                        time.sleep(e.x)
-                        continue
+                    if "drive" in url:
+                        try:
+                            ka = await helper.download(url, name)
+                            copy = await bot.send_document(chat_id=m.chat.id,document=ka, caption=cc1)
+                            count+=1
+                            os.remove(ka)
+                            time.sleep(1)
+                        except FloodWait as e:
+                            await m.reply_text(str(e))
+                            time.sleep(e.x)
+                            continue
                 
                 elif ".pdf" in url:
                     try:
