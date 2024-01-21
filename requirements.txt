@@ -1,15 +1,15 @@
 pyrogram==2.0.106
 tgcrypto
 requests
-pyromod==1.5
-yt-dlp
-ffmpeg
-aiohttp
-aiofiles
+pyromod==3.1.6
+yt-dlp==2023.12.30
+ffmpeg==0.2.0
+aiohttp==3.9.1
+aiofiles==23.2.1
 asyncio
 pycurl
 humanize
 
 cryptg
-telethon
+telethon==1.33.1
 python-decouple
