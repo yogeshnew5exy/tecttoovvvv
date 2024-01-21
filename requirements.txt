@@ -3,7 +3,7 @@ tgcrypto
 requests
 pyromod==3.1.6
 yt-dlp==2023.12.30
-ffmpeg==0.2.0
+ffmpeg
 aiohttp==3.9.1
 aiofiles==23.2.1
 asyncio
